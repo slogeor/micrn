@@ -5,7 +5,7 @@
     "extends": [
         "plugin:react/recommended"
     ],
-    "parser": "babel-eslint",    
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -21,7 +21,7 @@
         "react/display-name": [0, { "ignoreTranspilerName": true }],
         "indent": [
             "error",
-            4
+            2
         ],
         "linebreak-style": [
             "error",

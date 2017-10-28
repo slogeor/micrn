@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const SIDE_GAP = 10;
 const COLOR_WHITE = '#fff';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   navBar: {
     position: 'relative',
     backgroundColor: '#2F3549',
@@ -38,5 +38,3 @@ const styles = StyleSheet.create({
     color: COLOR_WHITE,
   },
 });
-
-export default styles;

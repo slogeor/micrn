@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { STATUS_BAR_HEIGHT, HEADER_HEIGHT, NOOP } from '../constant';
 import styles from './style.js';
 
 /**
  * NavBar 的高度由 statusBarHeight 和 headerHeight 两部分组成
- * statusBarHeight 默认 iOS 为 20，Android 为 0
- * headerHeight 默认 iOS 为 44，Android 为 56
+ * statusBarHeight 默认 iOS 为 20, Android 为 0
+ * headerHeight 默认 iOS 为 44, Android 为 56
  */
 function NavBar(props) {
   return (
@@ -16,7 +16,7 @@ function NavBar(props) {
         },
         props.style]}
       >
-      <View style={[styles.header, { height: props.navBarHeight }]}>
+      <View style={[styles.header, { height: props.headerHeight }]}>
         <TouchableOpacity
           activeOpacity={props.disableLeftBtn ? 1 : props.activeOpacity}
           onPress={props.disableLeftBtn ? NOOP : props.handelLeftBtn}
@@ -36,7 +36,7 @@ function NavBar(props) {
 }
 
 
-function _isString(str = '') {
+function _isString(str) {
   return typeof str === 'string';
 }
 
@@ -90,8 +90,8 @@ NavBar.propTypes = {
   rightBtnStyle: Text.propTypes.style,
   // statusBar 高度
   statusBarHeight: PropTypes.number,
-  // navBar 高度
-  navBarHeight: PropTypes.number,
+  // header 高度
+  headerHeight: PropTypes.number,
   // 标题容器的样式
   titleWrapStyle: View.propTypes.style,
   // 左侧按钮点击事件
@@ -119,7 +119,7 @@ NavBar.defaultProps = {
   rightBtn: '右边按钮',
   rightBtnStyle: null,
   statusBarHeight: STATUS_BAR_HEIGHT,
-  navBarHeight: HEADER_HEIGHT,
+  headerHeight: HEADER_HEIGHT,
   titleWrapStyle: null,
   handelLeftBtn: NOOP,
   disableLeftBtn: false,

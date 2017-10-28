@@ -1,23 +1,8 @@
-/**
- * 页面容器组件
- */
-import React, { PropTypes } from 'react';
-import { View, StatusBar } from 'react-native';
-import styles from './style';
+### 页面容器
 
-function All(props) {
-  return (
-    <View style={[styles.container, props.style]}>
-      <StatusBar
-        backgroundColor={props.statusBarBgColor}
-        barStyle={props.statusBarStyle}
-        hidden={props.hidden}
-      />
-      {props.children}
-    </View>
-  );
-}
+#### props
 
+```js
 All.propTypes = {
   // 子元素
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
@@ -36,7 +21,11 @@ All.propTypes = {
   statusBarStyle: PropTypes.string,
 
 };
+```
 
+#### 默认值
+
+```js
 All.defaultProps = {
   style: null,
   hidden: false,
@@ -44,5 +33,4 @@ All.defaultProps = {
   statusBarBgColor: 'transparent',
   statusBarStyle: 'light-content',
 };
-
-export default All;
+```
