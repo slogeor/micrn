@@ -3,6 +3,39 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { STATUS_BAR_HEIGHT, HEADER_HEIGHT, NOOP } from '../constant';
 import styles from './style.js';
 
+/**
+ * NavBar 的高度由 statusBarHeight 和 headerHeight 两部分组成
+ * statusBarHeight 默认 iOS 为 20，Android 为 0
+ * headerHeight 默认 iOS 为 44，Android 为 56
+ */
+function NavBar(props) {
+  return (
+    <View
+      style={[styles.navBar, {
+          paddingTop: props.statusBarHeight,
+        },
+        props.style]}
+      >
+      <View style={[styles.header, { height: props.navBarHeight }]}>
+        <TouchableOpacity
+          activeOpacity={props.disableLeftBtn ? 1 : props.activeOpacity}
+          onPress={props.disableLeftBtn ? NOOP : props.handelLeftBtn}
+        >
+          <View style={[styles.btnWrap, props.leftBtnWrapStyle]}>{getNavBarLfetBtn(props)}</View>
+        </TouchableOpacity>
+        <View style={[styles.titleWrap, props.titleWrapStyle]}>{getNavBarTitle(props)}</View>
+        <TouchableOpacity
+          activeOpacity={props.disableRightBtn ? 1 : props.activeOpacity}
+          onPress={props.disableRightBtn ? NOOP : props.handelRightBtn}
+        >
+          <View style={[styles.btnWrap, props.rigthBtnWrapStyle]}>{getNavBarRightBtn(props)}</View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+
 function _isString(str = '') {
   return typeof str === 'string';
 }
@@ -38,38 +71,6 @@ function getNavBarRightBtn(props) {
     );
   }
   return rightBtn;
-}
-
-/**
- * NavBar 的高度由 statusBarHeight 和 headerHeight 两部分组成
- * statusBarHeight 默认 iOS 为 20，Android 为 0
- * headerHeight 默认 iOS 为 44，Android 为 56
- */
-function NavBar(props) {
-  return (
-    <View
-      style={[styles.navBar, {
-          paddingTop: props.statusBarHeight,
-        },
-        props.style]}
-      >
-      <View style={[styles.header, { height: props.navBarHeight }]}>
-        <TouchableOpacity
-          activeOpacity={props.disableLeftBtn ? 1 : props.activeOpacity}
-          onPress={props.disableLeftBtn ? NOOP : props.handelLeftBtn}
-        >
-          <View style={[styles.btnWrap, props.leftBtnWrapStyle]}>{getNavBarLfetBtn(props)}</View>
-        </TouchableOpacity>
-        <View style={[styles.titleWrap, props.titleWrapStyle]}>{getNavBarTitle(props)}</View>
-        <TouchableOpacity
-          activeOpacity={props.disableRightBtn ? 1 : props.activeOpacity}
-          onPress={props.disableRightBtn ? NOOP : props.handelRightBtn}
-        >
-          <View style={[styles.btnWrap, props.rigthBtnWrapStyle]}>{getNavBarRightBtn(props)}</View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
 }
 
 NavBar.propTypes = {
