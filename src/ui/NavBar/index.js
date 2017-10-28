@@ -1,154 +1,131 @@
 import React, { Component, PropTypes } from 'react';
-import {
-  Platform,
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-
+import { View, Text, TouchableOpacity } from 'react-native';
+import { STATUS_BAR_HEIGHT, HEADER_HEIGHT, NOOP } from '../constant';
 import styles from './style.js';
 
-const isAndroid = Platform.OS === 'android';
+function _isString(str = '') {
+  return typeof str === 'string';
+}
 
-const STATUS_BAR_HEIGHT = isAndroid ? 0 : 20;
-const HEADER_HEIGHT = isAndroid ? 56 : 44;
-
-const NOOP = () => {};
-
-class NavBar extends Component {
-  makeTitle() {
-    let title = this.props.title;
-    if (typeof title === 'string') {
-      title = (
-        <Text
-          style={[styles.title, this.props.titleStyle]}
-          numberOfLines={1}
-        >
-          {this.props.title}
-        </Text>
-      );
-    }
-    return title;
-  }
-  makeLeftBtn() {
-    let leftBtn = this.props.leftBtn;
-    if (typeof leftBtn === 'string') {
-      leftBtn = (
-        <Text
-          style={[styles.btnText, this.props.leftBtnStyle]}
-        >
-          {this.props.leftBtn}
-        </Text>
-      );
-    }
-    return leftBtn;
-  }
-  makeRightBtn() {
-    let rightBtn = this.props.rightBtn;
-    if (typeof rightBtn === 'string') {
-      rightBtn = (
-        <Text
-          style={[styles.btnText, this.props.rightBtnStyle]}
-        >
-          {this.props.rightBtn}
-        </Text>
-      );
-    }
-    return rightBtn;
-  }
-  render() {
-    const title = this.makeTitle();
-    const leftBtn = this.makeLeftBtn();
-    const rightBtn = this.makeRightBtn();
-
+// NavBar 的标题
+function getNavBarTitle(props) {
+  const title = props.title;
+  if (_isString(title)) {
     return (
-      <View
-        style={[styles.navBar, {
-          paddingTop: this.props.statusBarHeight,
-        }, this.props.style]}
-      >
-        <View
-          style={[styles.header, {
-            height: this.props.headerHeight,
-          }]}
-        >
-          <View
-            style={[styles.titleWrapper, {
-              left: this.props.titleGap,
-              right: this.props.titleGap,
-            }]}
-          >
-            {title}
-          </View>
-          <TouchableOpacity
-            activeOpacity={this.props.leftBtnDisabled ? 1 : this.props.activeOpacity}
-            onPress={this.props.leftBtnDisabled ? NOOP : this.props.leftEvent}
-          >
-            <View style={styles.btn}>
-              {leftBtn}
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={this.props.rightBtnDisabled ? 1 : this.props.activeOpacity}
-            onPress={this.props.rightBtnDisabled ? NOOP : this.props.rightEvent}
-          >
-            <View style={styles.btn}>
-              {rightBtn}
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Text style={[styles.title, props.titleStyle]} numberOfLines={1}>{title}</Text>
     );
   }
+  return title;
+}
+
+// 左侧按钮
+function getNavBarLfetBtn(props) {
+  const leftBtn = props.leftBtn;
+  if (_isString(leftBtn)) {
+    return (
+      <Text style={[styles.btnText, props.leftBtnStyle]}>{leftBtn}</Text>
+    );
+  }
+  return leftBtn;
+}
+
+// 右侧按钮
+function getNavBarRightBtn(props) {
+  const rightBtn = props.rightBtn;
+  if (_isString(rightBtn)) {
+    return (
+      <Text style={[styles.btnText, props.rightBtnStyle]}>{rightBtn}</Text>
+    );
+  }
+  return rightBtn;
+}
+
+/**
+ * NavBar 的高度由 statusBarHeight 和 headerHeight 两部分组成
+ * statusBarHeight 默认 iOS 为 20，Android 为 0
+ * headerHeight 默认 iOS 为 44，Android 为 56
+ */
+function NavBar(props) {
+  return (
+    <View
+      style={[styles.navBar, {
+          paddingTop: props.statusBarHeight,
+        },
+        props.style]}
+      >
+      <View style={[styles.header, { height: props.navBarHeight }]}>
+        <TouchableOpacity
+          activeOpacity={props.disableLeftBtn ? 1 : props.activeOpacity}
+          onPress={props.disableLeftBtn ? NOOP : props.handelLeftBtn}
+        >
+          <View style={[styles.btnWrap, props.leftBtnWrapStyle]}>{getNavBarLfetBtn(props)}</View>
+        </TouchableOpacity>
+        <View style={[styles.titleWrap, props.titleWrapStyle]}>{getNavBarTitle(props)}</View>
+        <TouchableOpacity
+          activeOpacity={props.disableRightBtn ? 1 : props.activeOpacity}
+          onPress={props.disableRightBtn ? NOOP : props.handelRightBtn}
+        >
+          <View style={[styles.btnWrap, props.rigthBtnWrapStyle]}>{getNavBarRightBtn(props)}</View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
 NavBar.propTypes = {
   // 自定义样式
   style: View.propTypes.style,
+  // 标题: 可以是文本，也可以是组件
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  // 标题样式: 当标题是文本时才生效
+  titleStyle: Text.propTypes.style,
+  // 左侧按钮: 可以是文本，也可以是组件
+  leftBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  // 左侧按钮样式: 当 leftBtn 为文本时才生效
+  leftBtnStyle: Text.propTypes.style,
+  // 右侧按钮: 可以是文本，也可以是组件
+  rightBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  // 右侧按钮样式: 当 leftBtn 为文本时才生效
+  rightBtnStyle: Text.propTypes.style,
   // statusBar 高度
   statusBarHeight: PropTypes.number,
-  // header 高度
-  headerHeight: PropTypes.number,
-  // 标题
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  // 标题文本样式（title 为字符串时才生效）
-  titleStyle: Text.propTypes.style,
-  // 标题到左右两边的距离
-  titleGap: PropTypes.number,
-  // 左侧按钮
-  leftBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  // navBar 高度
+  navBarHeight: PropTypes.number,
+  // 标题容器的样式
+  titleWrapStyle: View.propTypes.style,
   // 左侧按钮点击事件
-  leftEvent: PropTypes.func,
-  // 左侧按钮文本样式（leftBtn 为字符串时才生效）
-  leftBtnStyle: Text.propTypes.style,
-  // 左侧按钮禁用
-  leftBtnDisabled: PropTypes.bool,
-  // 右侧按钮
-  rightBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  // 右侧按钮点击事件
-  rightEvent: PropTypes.func,
-  // 右侧按钮文本样式（rightBtn 为字符串时才生效）
-  rightBtnStyle: Text.propTypes.style,
-  // 右侧按钮禁用
-  rightBtnDisabled: PropTypes.bool,
+  handelLeftBtn: PropTypes.func,
+  // 是否禁用左侧按钮
+  disableLeftBtn: PropTypes.bool,
+  // 左侧按钮容器的样式
+  leftBtnWrapStyle: View.propTypes.style,
+  // 左侧按钮点击事件
+  handelRightBtn: PropTypes.func,
+  // 是否禁用左侧按钮
+  disableRightBtn: PropTypes.bool,
+  // 左侧按钮容器的样式
+  rightBtnWrapStyle: View.propTypes.style,
   // 按钮点击透明度变化
   activeOpacity: PropTypes.number,
 };
+
 NavBar.defaultProps = {
   style: null,
-  statusBarHeight: STATUS_BAR_HEIGHT,
-  headerHeight: HEADER_HEIGHT,
   title: '',
   titleStyle: null,
-  titleGap: 50,
-  leftBtn: null,
-  leftEvent: NOOP,
+  leftBtn: '左边按钮',
   leftBtnStyle: null,
-  leftBtnDisabled: false,
-  rightBtn: null,
-  rightEvent: NOOP,
+  rightBtn: '右边按钮',
   rightBtnStyle: null,
-  rightBtnDisabled: false,
+  statusBarHeight: STATUS_BAR_HEIGHT,
+  navBarHeight: HEADER_HEIGHT,
+  titleWrapStyle: null,
+  handelLeftBtn: NOOP,
+  disableLeftBtn: false,
+  leftBtnWrapStyle: null,
+  handelRightBtn: NOOP,
+  disableRightBtn: false,
+  rightBtnWrapStyle: null,
   activeOpacity: 0.8,
 };
 

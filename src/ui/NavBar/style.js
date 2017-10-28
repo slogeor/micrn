@@ -1,46 +1,41 @@
-import {
-  StyleSheet,
-} from 'react-native';
-// import {
-//   COLOR_BG_DARK,
-// } from '../constant';
+import { StyleSheet } from 'react-native';
 
 const SIDE_GAP = 10;
-const COLOR = '#fff';
+const COLOR_WHITE = '#fff';
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: '#2F3549',
     position: 'relative',
+    backgroundColor: '#2F3549',
   },
+
   header: {
-    paddingHorizontal: SIDE_GAP,
+    position: 'relative',
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-between',
-    position: 'relative',
     backgroundColor: 'transparent',
+    paddingHorizontal: SIDE_GAP,
   },
-  titleWrapper: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
+
+  titleWrap: {
     flexDirection: 'column',
     justifyContent: 'center',
     overflow: 'hidden',
   },
   title: {
+    fontSize: 16,
+    color: COLOR_WHITE,
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 16,
-    color: COLOR,
   },
-  btn: {
-    justifyContent: 'center',
+
+  btnWrap: {
     flex: 1,
+    justifyContent: 'center',
   },
   btnText: {
-    color: COLOR,
+    color: COLOR_WHITE,
   },
 });
 

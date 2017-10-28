@@ -1,36 +1,21 @@
 /**
  * 页面容器组件
  */
-import React, {
-  PropTypes,
-  Component,
-} from 'react';
-import {
-  View,
-  StatusBar,
-  StyleSheet,
-} from 'react-native';
+import React, { PropTypes, Component } from 'react';
+import { View, StatusBar } from 'react-native';
+import styles from './style';
 
-const styles = StyleSheet.create({
-  all: {
-    flex: 1,
-    position: 'relative',
-    backgroundColor: '#f3f6fc',
-  },
-});
-
-class All extends Component {
-  render() {
-    return (
-      <View style={[styles.all, this.props.style]}>
-        <StatusBar
-          backgroundColor={this.props.statusBarBgColor}
-          barStyle={this.props.statusBarStyle}
-        />
-        {this.props.children}
-      </View>
-    );
-  }
+function All(props) {
+  return (
+    <View style={[styles.container, props.style]}>
+      <StatusBar
+        backgroundColor={props.statusBarBgColor}
+        barStyle={props.statusBarStyle}
+        hidden={props.hidden}
+      />
+      {props.children}
+    </View>
+  );
 }
 
 All.propTypes = {
@@ -38,14 +23,24 @@ All.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   // 自定义样式
   style: View.propTypes.style,
-  // StatusBar 背景色
+  // 是否隐藏状态栏
+  hidden: PropTypes.bool,
+  // StatusBar 背景色，仅对 Android 生效
   statusBarBgColor: PropTypes.string,
-  // StatusBar 样式类型
+  /**
+   * StatusBar 样式类型
+   * default: 默认的样式（IOS为白底黑字、Android为黑底白字）
+   * light-content: 黑底白字
+   * dark-content: 白底黑字
+   */
   statusBarStyle: PropTypes.string,
+
 };
+
 All.defaultProps = {
-  children: null,
   style: null,
+  hidden: false,
+  children: null,
   statusBarBgColor: 'transparent',
   statusBarStyle: 'light-content',
 };
