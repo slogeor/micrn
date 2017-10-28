@@ -14,3 +14,5 @@ export const STATUS_BAR_HEIGHT = IS_IOS ? 20 : 0;
 export const HEADER_HEIGHT = IS_IOS ? 44 : 56;
 // 空函数
 export const NOOP = () => {};
+// 点击时不透明度
+export const ACTIVE_OPACITY = 0.8;

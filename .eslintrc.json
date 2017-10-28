@@ -28,7 +28,6 @@
             "unix"
         ],
         "quotes": [
-            "error",
             "double"
         ],
         "semi": [
