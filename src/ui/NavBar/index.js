@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { STATUS_BAR_HEIGHT, HEADER_HEIGHT, NOOP } from '../constant';
 import styles from './style.js';
@@ -12,10 +13,10 @@ function NavBar(props) {
   return (
     <View
       style={[styles.navBar, {
-          paddingTop: props.statusBarHeight,
-        },
-        props.style]}
-      >
+        paddingTop: props.statusBarHeight,
+      },
+      props.style]}
+    >
       <View style={[styles.header, { height: props.headerHeight }]}>
         <TouchableOpacity
           activeOpacity={props.disableLeftBtn ? 1 : props.activeOpacity}
@@ -114,9 +115,9 @@ NavBar.defaultProps = {
   style: null,
   title: '',
   titleStyle: null,
-  leftBtn: '左边按钮',
+  leftBtn: '',
   leftBtnStyle: null,
-  rightBtn: '右边按钮',
+  rightBtn: '',
   rightBtnStyle: null,
   statusBarHeight: STATUS_BAR_HEIGHT,
   headerHeight: HEADER_HEIGHT,

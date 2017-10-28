@@ -1,6 +1,23 @@
-### NavBar 标题
+### NavBar
 
-#### 实例
+#### 使用方法
+
+```js
+<NavBar
+  title="我是标题我是标题我是标题我是标题"
+  titleStyle={{width: 200}}
+  leftBtn="左边按钮"
+  leftBtnStyle={{color: '#FF5200'}}
+  rightBtn={(
+    <View>
+      <Text style={{color: '#FFF'}}>我是组件</Text>
+    </View>
+  )}
+  handelLeftBtn={() => {alert(11)}}
+  disableRightBtn
+/>
+```
+#### 点击左边按钮的效果
 
 ![navBar demo](demo.png)
 
@@ -24,8 +41,8 @@ NavBar.propTypes = {
   rightBtnStyle: Text.propTypes.style,
   // statusBar 高度
   statusBarHeight: PropTypes.number,
-  // navBar 高度
-  navBarHeight: PropTypes.number,
+  // header 高度
+  headerHeight: PropTypes.number,
   // 标题容器的样式
   titleWrapStyle: View.propTypes.style,
   // 左侧按钮点击事件
@@ -52,12 +69,12 @@ NavBar.defaultProps = {
   style: null,
   title: '',
   titleStyle: null,
-  leftBtn: '左边按钮',
+  leftBtn: '',
   leftBtnStyle: null,
-  rightBtn: '右边按钮',
+  rightBtn: '',
   rightBtnStyle: null,
   statusBarHeight: STATUS_BAR_HEIGHT,
-  navBarHeight: HEADER_HEIGHT,
+  headerHeight: HEADER_HEIGHT,
   titleWrapStyle: null,
   handelLeftBtn: NOOP,
   disableLeftBtn: false,
