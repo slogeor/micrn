@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#f6f6f6"
     },
     view: {
-        flexDirection: "row" 
+        flexDirection: "row"
     }
 })
 @connect(state => ({
@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     showFunc: () => dispatch(show()),
     hideFunc: () => dispatch(hide())
 }))
-export default class HomeScreen extends React.Component {
+export default class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             shake: new Animated.Value(0)
-        }    
+        }
     }
     pressFunc() {
         if(this.props.status == "show") {
@@ -45,7 +45,7 @@ export default class HomeScreen extends React.Component {
                     toValue: 1,
                     duration: 1000
                 }
-            ).start()      
+            ).start()
         }
     }
     render() {

@@ -43,3 +43,6 @@ bundle/
 .eslintcache
 .vscode
 package-lock.json
+
+## demo
+src1
