@@ -1,4 +1,4 @@
-### NavBar: 应用头标题
+### NavBar: 标题
 
 #### 使用方法
 
@@ -19,7 +19,7 @@
 ```
 #### 点击左边按钮的效果
 
-![navBar demo](demo.png)
+ <img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
 #### props
 

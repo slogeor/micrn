@@ -31,7 +31,7 @@
 
 #### 具体效果
 
-![](demo.png)
+ <img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
 #### prop
 
