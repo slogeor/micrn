@@ -35,7 +35,6 @@ All.propTypes = {
    * dark-content: 白底黑字
    */
   statusBarStyle: PropTypes.string,
-
 };
 
 All.defaultProps = {

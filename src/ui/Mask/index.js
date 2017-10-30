@@ -1,8 +1,9 @@
 /**
  * 遮罩层
  */
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import { Animated, TouchableWithoutFeedback, View } from 'react-native';
+import PropTypes from 'prop-types';
 import { NOOP } from '../constant';
 import styles from './style';
 

@@ -18,7 +18,8 @@
 #### props
 
 ```js
-// 自定义样式
+Mask.propTypes = {
+  // 自定义样式
   style: View.propTypes.style,
   // 显示开关
   visible: PropTypes.bool.isRequired,
@@ -36,6 +37,7 @@
   duration: PropTypes.number,
   // 子元素
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
+};
 ```
 
 #### 默认值

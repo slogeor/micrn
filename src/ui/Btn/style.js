@@ -9,13 +9,11 @@ export default StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: COLOR_THEME,
   },
-
   contentContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   text: {
     color: '#fff',
   },

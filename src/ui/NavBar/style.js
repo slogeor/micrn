@@ -8,7 +8,6 @@ export default StyleSheet.create({
     position: 'relative',
     backgroundColor: '#2F3549',
   },
-
   header: {
     position: 'relative',
     flexDirection: 'row',
@@ -17,7 +16,6 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
     paddingHorizontal: SIDE_GAP,
   },
-
   titleWrap: {
     flexDirection: 'column',
     justifyContent: 'center',
@@ -29,7 +27,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-
   btnWrap: {
     flex: 1,
     justifyContent: 'center',
