@@ -37,7 +37,7 @@ TabItem.propTypes = {
   // 自定义容器样式
   style: View.propTypes.style,
   // title
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   // 默认底部 border 的样式
   borderStyle: View.propTypes.style,
   // 选中 tab 底部 border 的样式

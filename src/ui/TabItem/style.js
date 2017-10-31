@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 const ACTIVE_COLOR = '#FF5200';
