@@ -1,64 +1,66 @@
 /**
- * TabItem item 组件
+ * TabItem 组件
  */
-import React, {
-  PropTypes,
-} from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native';
-import {
-  COLOR_DARKGRAY,
-  COLOR_WHITE,
-  FONT_14,
-} from 'BizStyle';
-
-const styles = StyleSheet.create({
-  all: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: COLOR_WHITE,
-  },
-});
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { NOOP } from '../constant';
+import styles from './style';
 
 function TabItem(props) {
+  let title = props.title;
+  if (typeof title === 'string') {
+    title =  (
+      <Text style={[
+        styles.tabTitle,
+        props.titleStyle,
+        props.active && styles.activeTabTitle,
+        props.active && props.activeTitleStyle,
+      ]}>{title}</Text>
+    );
+  }
   return (
-    <View
-      style={[styles.all, {
-        borderBottomColor: props.borderColor,
-      }, props.style]}
-    >
-      <Text
-        style={{
-          color: props.color,
-          fontWeight: props.fontWeight,
-          fontSize: FONT_14,
-        }}
-      >
-        {props.title}
-      </Text>
-    </View>
+    <TouchableWithoutFeedback onPress={props.onPress}>
+      <View style={[styles.container, props.style]}>
+        <View style={[
+          styles.border,
+          props.borderStyle,
+          props.active && styles.activeBorder,
+          props.active && props.activeBorderStyle,
+        ]}>{title}</View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 TabItem.propTypes = {
+  // 自定义容器样式
   style: View.propTypes.style,
-  title: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  borderColor: PropTypes.string,
-  fontWeight: PropTypes.string,
+  // title
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  // 默认底部 border 的样式
+  borderStyle: View.propTypes.style,
+  // 选中 tab 底部 border 的样式
+  activeBorderStyle: View.propTypes.style,
+  // title 的样式 当 title 为字符串才生效
+  titleStyle: Text.propTypes.style,
+  // 选中的 title 样式
+  activeTitleStyle: Text.propTypes.style,
+  // 选中的状态
+  active: PropTypes.bool,
+  // onPress
+  onPress: PropTypes.func,
 };
 
 TabItem.defaultProps = {
   style: null,
   title: '',
-  color: COLOR_DARKGRAY,
-  borderColor: '#fff',
-  fontWeight: 'normal',
+  borderStyle: null,
+  activeBorderStyle: null,
+  titleStyle: null,
+  activeTitleStyle: null,
+  active: false,
+  onPress: NOOP,
 };
 
 export default TabItem;
