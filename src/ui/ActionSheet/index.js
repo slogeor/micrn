@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { IS_IOS, NOOP } from 'constantModule';
-import Popup from '../Popup';
+import Popover from '../Popover';
 import styles from './style';
 
 function ActionSheet(props) {
   return (
-    <Popup
+    <Popover
       visible={props.visible}
       maskStyle={[styles.mask, props.maskStyle]}
       onPress={props.onClose}
@@ -21,7 +21,7 @@ function ActionSheet(props) {
         {getBtnList(props)}
       </View>
       {getCancelBtn(props)}
-    </Popup>
+    </Popover>
   );
 }
 
@@ -87,19 +87,19 @@ function getCancelBtn(propsObj) {
 ActionSheet.propTypes = {
   // 自定义样式
   style: View.propTypes.style,
-  // Popup 的 props
+  // Popover 的 props
   // 控制开关
-  visible: Popup.propTypes.visible,
+  visible: Popover.propTypes.visible,
   // 遮罩层样式
-  maskStyle: Popup.propTypes.maskStyle,
+  maskStyle: Popover.propTypes.maskStyle,
   // 打开遮罩层回调
-  onOpen: Popup.propTypes.onOpen,
+  onOpen: Popover.propTypes.onOpen,
   // 关闭遮罩层回调
-  onClose: Popup.propTypes.onClose,
+  onClose: Popover.propTypes.onClose,
   // 动画时长
-  duration: Popup.propTypes.duration,
+  duration: Popover.propTypes.duration,
   // 事情是否穿透
-  pointerEvents: Popup.propTypes.pointerEvents,
+  pointerEvents: Popover.propTypes.pointerEvents,
   // 按钮配置项
   btnOpts: PropTypes.arrayOf(PropTypes.shape({
     // key

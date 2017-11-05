@@ -1,4 +1,4 @@
-###  Popup 底部弹层
+###  Popover 底部弹层
 
 依赖 Mask 组件
 
@@ -6,11 +6,11 @@
 
 ```js
 <View style={styles.container}>
-  <Popup visible={this.state.visible}>
+  <Popover visible={this.state.visible}>
     <View style={styles.view}>
       <Btn />
     </View>
-  </Popup>
+  </Popover>
 </View>
 ```
 #### 效果
@@ -20,7 +20,7 @@
 #### Props
 
 ```js
-Popup.propTypes = {
+Popover.propTypes = {
   // 控制开发
   visible: PropTypes.bool.isRequired,
   // 遮罩层的样式
@@ -45,7 +45,7 @@ Popup.propTypes = {
 #### 默认值
 
 ```js
-Popup.defaultProps = {
+Popover.defaultProps = {
   visible: false,
   maskStyle: null,
   onPress: NOOP,

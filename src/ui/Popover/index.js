@@ -8,7 +8,7 @@ import { NOOP } from '../constant';
 import Mask from '../Mask';
 import styles from './style';
 
-class Popup extends Component {
+class Popover extends Component {
   constructor(props) {
     super(props);
     // 距离
@@ -105,7 +105,7 @@ class Popup extends Component {
   }
 }
 
-Popup.propTypes = {
+Popover.propTypes = {
   // 控制开发
   visible: PropTypes.bool.isRequired,
   // 遮罩层的样式
@@ -126,7 +126,7 @@ Popup.propTypes = {
   pointerEvents: View.propTypes.pointerEvents,
 };
 
-Popup.defaultProps = {
+Popover.defaultProps = {
   visible: false,
   maskStyle: null,
   onPress: NOOP,
@@ -138,4 +138,4 @@ Popup.defaultProps = {
   pointerEvents: 'auto',
 };
 
-export default Popup;
+export default Popover;
