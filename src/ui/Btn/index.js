@@ -19,7 +19,7 @@ function Btn(props) {
     <View style={[styles.container, props.style]}>
     <TouchableOpacity
       activeOpacity={props.disabled ? 1 : props.activeOpacity}
-      onPress={props.disabled ? props.onPress : NOOP}
+      onPress={props.disabled ? NOOP : props.onPress}
       style={[styles.contentContainer, props.contentContainerStyle]}
       hitSlop={props.hitSlop}
     >
@@ -61,7 +61,7 @@ Btn.defaultProps = {
     left: 0,
     right: 0,
   },
-  onPress: null,
+  onPress: NOOP,
   activeOpacity: ACTIVE_OPACITY,
   children: '确定',
 };
