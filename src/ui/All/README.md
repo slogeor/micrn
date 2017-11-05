@@ -1,6 +1,6 @@
 ### All
 
-#### props
+#### propTypes
 
 ```js
 All.propTypes = {

@@ -10,6 +10,6 @@ export { default as Popup } from './Popup';
 export { default as NavBar } from './NavBar';
 export { default as TabItem } from './TabItem';
 export { default as Loading } from './Loading';
-// export { default as ActionSheet } from './ActionSheet';
+export { default as ActionSheet } from './ActionSheet';
 
 // export { default as TabBarItem } from './TabBarItem';

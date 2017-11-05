@@ -1,6 +1,6 @@
 ### Btn: 按钮
 
-### 使用方法
+#### 使用方法
 
 ```js
 // 默认
@@ -33,7 +33,7 @@
 
  <img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
-#### prop
+#### propTypes
 
 ```js
 Btn.propTypes = {

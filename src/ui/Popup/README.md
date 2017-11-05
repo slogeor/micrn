@@ -2,7 +2,18 @@
 
 依赖 Mask 组件
 
-#### Demo
+#### 使用方法
+
+```js
+<View style={styles.container}>
+  <Popup visible={this.state.visible}>
+    <View style={styles.view}>
+      <Btn />
+    </View>
+  </Popup>
+</View>
+```
+#### 效果
 
  <img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
