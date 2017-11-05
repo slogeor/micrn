@@ -29,7 +29,7 @@ function NavBar(props) {
           activeOpacity={props.disableRightBtn ? 1 : props.activeOpacity}
           onPress={props.disableRightBtn ? NOOP : props.handelRightBtn}
         >
-          <View style={[styles.btnWrap, props.rigthBtnWrapStyle]}>{getNavBarRightBtn(props)}</View>
+          <View style={[styles.btnWrap, props.rightBtnWrapStyle]}>{getNavBarRightBtn(props)}</View>
         </TouchableOpacity>
       </View>
     </View>
@@ -42,33 +42,33 @@ function _isString(str) {
 }
 
 // NavBar 的标题
-function getNavBarTitle(props) {
-  const title = props.title;
+function getNavBarTitle(propsObj) {
+  const title = propsObj.title;
   if (_isString(title)) {
     return (
-      <Text style={[styles.title, props.titleStyle]} numberOfLines={1}>{title}</Text>
+      <Text style={[styles.title, propsObj.titleStyle]} numberOfLines={1}>{title}</Text>
     );
   }
   return title;
 }
 
 // 左侧按钮
-function getNavBarLfetBtn(props) {
-  const leftBtn = props.leftBtn;
+function getNavBarLfetBtn(propsObj) {
+  const leftBtn = propsObj.leftBtn;
   if (_isString(leftBtn)) {
     return (
-      <Text style={[styles.btnText, props.leftBtnStyle]}>{leftBtn}</Text>
+      <Text style={[styles.btnText, propsObj.leftBtnStyle]}>{leftBtn}</Text>
     );
   }
   return leftBtn;
 }
 
 // 右侧按钮
-function getNavBarRightBtn(props) {
-  const rightBtn = props.rightBtn;
+function getNavBarRightBtn(propsObj) {
+  const rightBtn = propsObj.rightBtn;
   if (_isString(rightBtn)) {
     return (
-      <Text style={[styles.btnText, props.rightBtnStyle]}>{rightBtn}</Text>
+      <Text style={[styles.btnText, propsObj.rightBtnStyle]}>{rightBtn}</Text>
     );
   }
   return rightBtn;

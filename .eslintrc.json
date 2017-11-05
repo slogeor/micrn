@@ -17,22 +17,5 @@
         "react"
     ],
     "rules": {
-        "react/prop-types": [0, {"ignore": "ignore"}],
-        "react/display-name": [0, { "ignoreTranspilerName": true }],
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ]
     }
 }
