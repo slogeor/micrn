@@ -17,7 +17,7 @@
 
  菊花是基于 ActivityIndicator 这个控件实现的，在 Android 和 IOS 上展示效果是不一样的。
 
-#### propTypes
+#### props
 
 ```js
 Loading.propTypes = {

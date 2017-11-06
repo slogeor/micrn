@@ -26,7 +26,7 @@
 
  <img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
-#### propTypes
+#### props
 
 ```js
 TabItem.propTypes = {
