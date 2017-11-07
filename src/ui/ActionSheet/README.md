@@ -1,4 +1,4 @@
-### ActionSheet 上拉按钮组
+### ActionSheet 上拉按钮组件
 
 依赖 Popover 组件
 

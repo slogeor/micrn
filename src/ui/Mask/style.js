@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { MASK_COLOR } from '../constant';
 
 export default StyleSheet.create({
   container: {
@@ -7,6 +8,6 @@ export default StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: MASK_COLOR,
   },
 });

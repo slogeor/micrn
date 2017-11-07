@@ -2,8 +2,7 @@
  * ui 组件依赖的常量
  */
 
-import { Platform, Dimensions } from 'react-native';
-
+import { Platform, Dimensions, StyleSheet } from 'react-native';
 // 页面宽度
 export const { width, height, statusBarHeight } = Dimensions.get('window');
 // 平台
@@ -16,3 +15,8 @@ export const HEADER_HEIGHT = IS_IOS ? 44 : 56;
 export const NOOP = () => {};
 // 点击时不透明度
 export const ACTIVE_OPACITY = 0.8;
+// 遮罩层的背景色
+export const MASK_COLOR = 'rgba(0, 0, 0, 0.4)';
+// 视觉最细
+export const HAIR_LINE_WIDTH = StyleSheet.hairlineWidth;
+

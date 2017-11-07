@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native';
+import { MASK_COLOR, HAIR_LINE_WIDTH } from '../constant';
 
-const COLOR_SYSTEM = '#157efb';
+const BTN_COLOR = '#157efb';
+const BTN_HEIGHT = 57;
+const BTN_FONT_SIZE = 20;
 const BORDER_RADIUS = 12;
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     padding: 10,
   },
   mask: {
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    backgroundColor: MASK_COLOR,
   },
   // for android
   btnFirst: {
@@ -22,15 +25,15 @@ const styles = StyleSheet.create({
   },
   btn: {
     flex: 1,
-    height: 57,
+    height: BTN_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-    marginTop: StyleSheet.hairlineWidth,
+    marginTop: HAIR_LINE_WIDTH,
   },
   btnText: {
-    color: COLOR_SYSTEM,
-    fontSize: 20,
+    color: BTN_COLOR,
+    fontSize: BTN_FONT_SIZE,
   },
   btnList: {
     marginBottom: 7,
@@ -44,5 +47,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default styles;

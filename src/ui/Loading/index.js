@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {  ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import Mask from '../Mask';
 import styles from './style';
 
