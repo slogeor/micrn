@@ -15,7 +15,7 @@ export { default as Badge } from './Badge';
 // 导航栏组件
 export { default as NavBar } from './NavBar';
 // 对话框
-// export { default as Dialog } from './Dialog';
+export { default as Dialog } from './Dialog';
 // Tab item 组件
 export { default as TabItem } from './TabItem';
 // 加载ing 组件
