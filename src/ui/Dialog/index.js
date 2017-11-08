@@ -8,14 +8,19 @@ import styles from './style.js';
 // 按钮
 function createBtn(propsObj) {
     return propsObj.btnOpts.map((item, index) => {
-    const btnStyle = [styles.btn, propsObj.btnStyle];
+    const btnStyle = [propsObj.btnStyle];
     // 第一个按钮
     if (index === 0) {
       btnStyle.push(styles.firstBtn);
     }
     return (
-      <View style={[btnStyle]} key={item.key || index}>
-        <TouchableOpacity onPress={item.onPress} activeOpacity={ACTIVE_OPACITY}>
+      <TouchableOpacity
+        onPress={item.onPress}
+        activeOpacity={ACTIVE_OPACITY}
+        key={item.key || index}
+        style={styles.btn}
+      >
+        <View style={[btnStyle]}>
           <Text
             style={[
               styles.btnText,
@@ -26,8 +31,8 @@ function createBtn(propsObj) {
           >
             {item.title}
           </Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     );
   });
   return
@@ -71,6 +76,7 @@ function Dialog(props) {
     <Mask
       visible={props.visible}
       style={[styles.mask, props.maskStyle]}
+      pointerEvents="auto"
     >
       <View style={[styles.dialog, props.style]}>
         <View style={styles.container}>

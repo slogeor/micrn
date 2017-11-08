@@ -1,6 +1,6 @@
 ### Dialog: 对话框
 
-依赖 Mask 遮罩层
+依赖 Mask 遮罩层，支持 Alert 和 Confirm 两种形态。
 
 #### 使用方法
 
@@ -15,7 +15,7 @@
     title: '确认',
   }]}
   title="对话框"
-  content="are yousok?"
+  content="are you ok?"
   btnTextStyle={styles.btnStyle}
   visible={this.state.visible}
 />
