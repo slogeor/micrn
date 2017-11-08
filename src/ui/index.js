@@ -10,6 +10,8 @@ export { default as Btn } from './Btn';
 export { default as Tab } from './Tab';
 // 遮罩层组件
 export { default as Mask } from './Mask';
+// Alert 组件
+export { default as Alert } from './Alert';
 // 数字标记组件
 export { default as Badge } from './Badge';
 // 导航栏组件
@@ -26,5 +28,3 @@ export { default as ToolTip } from './ToolTip';
 export { default as Popover } from './Popover';
 // 上拉菜单组件
 export { default as ActionSheet } from './ActionSheet';
-
-// export { default as TabBarItem } from './TabBarItem';
