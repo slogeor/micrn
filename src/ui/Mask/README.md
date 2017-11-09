@@ -13,7 +13,7 @@
 ```
 #### 效果
 
- <img src="./demo.png" width = "320"  alt="图片名称" align=center />
+<img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
 #### props
 

@@ -1,42 +1,62 @@
 import React, { Component } from "react"
-import { Text, View } from "react-native"
-import { All, NavBar, Btn } from "UIModule"
+import { Text, View, TouchableWithoutFeedback} from "react-native"
+import {
+  All,
+  NavBar,
+  Btn,
+  Mask,
+  Loading,
+  TabItem,
+  Tab,
+  Popover,
+  ActionSheet,
+  Badge,
+  ToolTip,
+  Dialog,
+  Alert,
+} from "UIModule"
 import styles from "./style"
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      visible: false,
+    }
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
   }
+
+  show() {
+    this.setState({
+      visible: true,
+    })
+  }
+
+  hide() {
+    this.setState({
+      visible: false,
+    })
+  }
+
   render() {
     return (
       <All>
         <NavBar
-          title="按钮组件"
+          title="Alert"
           titleStyle={{width: 200}}
-          leftBtn="左边按钮"
           leftBtnStyle={{color: '#FF5200'}}
         />
         <View style={styles.container}>
-          <View style={styles.view}>
-            <Btn />
+          <View>
+            <Btn onPress={this.show} />
           </View>
-          <View style={styles.view}>
-            <Btn disabled style={{ backgroundColor: 'rgba(255, 82, 0, 0.6)' }} >
-              <Text>禁用</Text>
-            </Btn>
-          </View>
-          <View style={styles.view}>
-            <Btn
-              style={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#333' }}
-              btnStyle={{ color: '#666' }}
-            >
-              <Text>自定义</Text>
-            </Btn>
-          </View>
-
+          <Alert
+            visible={this.state.visible}
+            onPress={this.hide}
+            titleStyle={styles.text}
+          />
         </View>
-
-
       </All>
     )
   }

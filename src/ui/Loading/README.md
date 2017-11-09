@@ -1,5 +1,7 @@
 ### Loading: 菊花
 
+菊花是基于 ActivityIndicator 这个控件实现的，在 Android 和 IOS 上展示效果是不一样的。
+
 #### 使用方法
 
 ```js
@@ -9,13 +11,10 @@
   </View>
 </Loading>
 ```
+
 #### 效果
 
- <img src="./demo.png" width = "320"  alt="图片名称" align=center />
-
- #### 说明
-
- 菊花是基于 ActivityIndicator 这个控件实现的，在 Android 和 IOS 上展示效果是不一样的。
+<img src="./demo.png" width = "320"  alt="图片名称" align=center />
 
 #### props
 
