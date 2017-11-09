@@ -1,14 +1,14 @@
-### Alert
+### Alert: 对话框
 
-在 Dialog 组件进行了封装，只支持 title 和 onPress，同时也继承 Dialog 属性。
+在 Dialog 组件进行了封装，同时也继承 Dialog 属性，支持一个按钮的形态
 
 #### 使用方法
 
 ```js
 <Alert
+  title="title"
   visible={this.state.visible}
   onPress={this.hide}
-  titleStyle={styles.text}
 />
 ```
 

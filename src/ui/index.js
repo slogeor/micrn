@@ -26,5 +26,7 @@ export { default as Loading } from './Loading';
 export { default as ToolTip } from './ToolTip';
 // 底部弹出组件
 export { default as Popover } from './Popover';
+// confirm 确认框
+export { default as Confirm } from './Confirm';
 // 上拉菜单组件
 export { default as ActionSheet } from './ActionSheet';

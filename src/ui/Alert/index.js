@@ -8,7 +8,6 @@ function Alert(props) {
   return (
     <Dialog
       {...props}
-      title={props.title}
       btnOpts={[{
         title: props.btnTex,
         style: props.btnTexStyle,
@@ -20,8 +19,6 @@ function Alert(props) {
 
 Alert.propTypes = {
   ...Dialog.propTypes,
-  // title
-  title: PropTypes.string,
   // 按钮
   btnTex: PropTypes.string,
   // 按钮样式
@@ -32,7 +29,6 @@ Alert.propTypes = {
 
 Alert.defaultProps = {
   ...Dialog.defaultProps,
-  title: 'title',
   btnTex: 'Ok',
   btnTexStyle: null,
   onPress: NOOP,
