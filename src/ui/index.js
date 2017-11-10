@@ -18,6 +18,8 @@ export { default as Badge } from './Badge';
 export { default as NavBar } from './NavBar';
 // 对话框
 export { default as Dialog } from './Dialog';
+// 开关
+export { default as Switch } from './Switch';
 // Tab item 组件
 export { default as TabItem } from './TabItem';
 // 加载ing 组件
