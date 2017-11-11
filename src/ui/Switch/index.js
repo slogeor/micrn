@@ -4,37 +4,44 @@ import { Animated, TouchableWithoutFeedback } from 'react-native';
 import { NOOP } from '../constant';
 import styles from './style.js';
 
+// 响应区域
+const HIT_SLOP = {
+  top: 10,
+  left: 10,
+  bottom: 10,
+  right: 10,
+};
+
 class Switch extends Component {
   constructor(props) {
     super(props);
-    this.hitSlop = {
-      top: 10,
-      left: 10,
-      bottom: 10,
-      right: 10,
-    };
+    this.transforX = (props.switchWidth - props.switchHeight) / 2;
     this.state = {
-      transformSwitch: new Animated.Value(props.value ? 10 : -10),
+      // transform
+      changeTransform: new Animated.Value(props.value ? this.transforX : -this.transforX),
+      // 背景样式
       backgroundColor: new Animated.Value(props.value ? 75 : -75),
+      // 圆圈的样式
       circleColor: new Animated.Value(props.value ? 75 : -75),
     };
-
-    this.handleSwitch = this.handleSwitch.bind(this);
-    this.animateSwitch = this.animateSwitch.bind(this);
+    // 变化
+    this.handleChange = this.handleChange.bind(this);
+    // 动画
+    this.changeAnimation = this.changeAnimation.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     const { disabled } = this.props;
     // 禁用, 直接 return
     if (disabled) return;
-    this.animateSwitch(nextProps.value);
+    this.changeAnimation(nextProps.value);
   }
 
-  animateSwitch(value, cb = NOOP) {
+  changeAnimation(value, cb = NOOP) {
     const duration = this.props.duration;
     Animated.parallel([
-      Animated.spring(this.state.transformSwitch, {
-        toValue: value ? 10 : -10,
+      Animated.spring(this.state.changeTransform, {
+        toValue: value ? this.transforX : -this.transforX,
         duration,
       }),
       Animated.timing(this.state.backgroundColor, {
@@ -49,7 +56,7 @@ class Switch extends Component {
   }
 
   // 处理点击事件
-  handleSwitch() {
+  handleChange() {
     const { value, onChange, disabled } = this.props;
     if (disabled) {
       return;
@@ -58,41 +65,56 @@ class Switch extends Component {
   }
 
   render() {
-    const { transformSwitch, backgroundColor, circleColor } = this.state;
+    const { changeTransform, backgroundColor, circleColor } = this.state;
 
     const {
+      switchWidth,
+      switchHeight,
       backgroundActive,
       backgroundInactive,
-      activeBorderColor,
-      deActiveBorderColor,
+      activeCircleColor,
+      deActiveCircleColor,
     } = this.props;
 
-    const interpolatedColorAnimation = backgroundColor.interpolate({
+    const backgroundColorAnimation = backgroundColor.interpolate({
       inputRange: [-75, 75],
       outputRange: [backgroundInactive, backgroundActive],
     });
 
-    const interpolatedBorderColor = circleColor.interpolate({
+    const circleColorAnimation = circleColor.interpolate({
       inputRange: [-75, 75],
-      outputRange: [deActiveBorderColor, activeBorderColor],
+      outputRange: [deActiveCircleColor, activeCircleColor],
     });
 
     return (
-      <TouchableWithoutFeedback onPress={this.handleSwitch} hitSlop={this.hitSlop}>
+      <TouchableWithoutFeedback onPress={this.handleChange} hitSlop={HIT_SLOP}>
         <Animated.View
           style={[
             styles.container,
-            {backgroundColor: interpolatedColorAnimation},
+            {
+              width: switchWidth,
+              height: switchHeight,
+              borderRadius: switchHeight,
+              backgroundColor: backgroundColorAnimation,
+            },
           ]}
         >
           <Animated.View
             style={[
               styles.animatedContainer,
-              {transform: [{ translateX: transformSwitch }]},
+              {transform: [{ translateX: changeTransform }]},
             ]}
           >
             <Animated.View
-              style={[styles.circle, {backgroundColor: interpolatedBorderColor}]}
+              style={[
+                styles.circle,
+                {
+                  width: switchHeight,
+                  height: switchHeight,
+                  borderRadius: switchHeight / 2,
+                  backgroundColor: circleColorAnimation,
+                }
+              ]}
             />
           </Animated.View>
         </Animated.View>
@@ -100,7 +122,6 @@ class Switch extends Component {
     );
   }
 }
-
 
 Switch.propTypes = {
   // change callback
@@ -114,23 +135,28 @@ Switch.propTypes = {
   // 关闭的背景色
   backgroundInactive: PropTypes.string,
   // 打开的边框颜色
-  activeBorderColor: PropTypes.string,
+  activeCircleColor: PropTypes.string,
   // 关闭的边框颜色
-  deActiveBorderColor: PropTypes.string,
+  deActiveCircleColor: PropTypes.string,
   // 动画时长
   duration: PropTypes.number,
+  // 宽度
+  switchWidth: PropTypes.number,
+  // 高度
+  switchHeight: PropTypes.number,
 };
 
 Switch.defaultProps = {
   onChange: () => null,
   value: false,
   disabled: false,
-  backgroundActive: 'green',
-  backgroundInactive: 'gray',
-  activeBorderColor: 'white',
-  deActiveBorderColor: 'white',
+  backgroundActive: '#FF5200',
+  backgroundInactive: '#888',
+  activeCircleColor: '#FFF',
+  deActiveCircleColor: '#FFF',
   duration: 200,
+  switchWidth: 70,
+  switchHeight: 30,
 };
-
 
 export default Switch;
