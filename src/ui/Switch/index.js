@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Animated, TouchableWithoutFeedback } from 'react-native';
-import { NOOP } from '../constant';
+import { NOOP, HIT_SLOP } from '../constant';
 import styles from './style.js';
-
-// 响应区域
-const HIT_SLOP = {
-  top: 10,
-  left: 10,
-  bottom: 10,
-  right: 10,
-};
 
 class Switch extends Component {
   constructor(props) {
