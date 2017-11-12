@@ -16,6 +16,8 @@ export { default as Radio } from './Radio';
 export { default as Alert } from './Alert';
 // 数字标记组件
 export { default as Badge } from './Badge';
+// 文本框
+export { default as Input } from './Input';
 // 导航栏组件
 export { default as NavBar } from './NavBar';
 // 对话框
