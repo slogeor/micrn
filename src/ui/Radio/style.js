@@ -11,10 +11,6 @@ export default StyleSheet.create({
     backgroundColor: '#FF5200',
     overflow: 'hidden',
   },
-  checkedIcon: {
-    fontSize: 14,
-    color: '#FFF',
-  },
   unchecked: {
     width: 20,
     height: 20,
@@ -22,7 +18,6 @@ export default StyleSheet.create({
     borderRadius: 20,
     borderColor: '#999',
   },
-
   disabled: {
     width: 20,
     height: 20,

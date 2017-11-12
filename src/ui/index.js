@@ -11,7 +11,7 @@ export { default as Tab } from './Tab';
 // 遮罩层组件
 export { default as Mask } from './Mask';
 // Radio 单选框
-export { default as RadioItem } from './RadioItem';
+export { default as Radio } from './Radio';
 // Alert 组件
 export { default as Alert } from './Alert';
 // 数字标记组件

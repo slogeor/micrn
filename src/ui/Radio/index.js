@@ -4,11 +4,12 @@ import { View, TouchableWithoutFeedback } from 'react-native';
 import { HIT_SLOP, NOOP } from '../constant';
 import styles from './style.js';
 
-class RadioItem extends Component {
+class Radio extends Component {
   constructor(props) {
     super(props);
     this.onPress = this.onPress.bind(this);
   }
+
   onPress() {
     onChange(!this.props.checked, this.props.id, this.props.value);
   }
@@ -41,8 +42,8 @@ class RadioItem extends Component {
   }
 }
 
-RadioItem.propTypes = {
-  // 唯一的id
+Radio.propTypes = {
+  // id
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   // id 对应的值
   value: PropTypes.string,
@@ -60,17 +61,18 @@ RadioItem.propTypes = {
   onChange: PropTypes.func,
   // 是否禁用
   disabled: PropTypes.bool,
-  // 禁用样式
 };
 
-RadioItem.defaultProps = {
+Radio.defaultProps = {
+  id: null,
+  value: null,
   style: null,
   checked: false,
-  checkedComponent: (<View style={styles.checked} />),
-  uncheckedComponent: (<View style={styles.unchecked} />),
-  disabledComponent: (<View style={styles.disabled} />),
-  onChange: () => {},
+  checkedComponent: <View style={styles.checked} />,
+  uncheckedComponent: <View style={styles.unchecked} />,
+  disabledComponent: <View style={styles.disabled} />,
+  onChange: NOOP,
   disabled: false,
 };
 
-export default RadioItem;
+export default Radio;
