@@ -22,6 +22,8 @@ export { default as NavBar } from './NavBar';
 export { default as Dialog } from './Dialog';
 // 开关
 export { default as Switch } from './Switch';
+// Checkbox 多选框
+export { default as Checkbox } from './Checkbox';
 // Tab item 组件
 export { default as TabItem } from './TabItem';
 // 加载ing 组件
