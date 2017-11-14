@@ -1,18 +1,14 @@
 import { StyleSheet } from 'react-native';
+import { HAIR_LINE_WIDTH } from '../constant';
 
 const FONT_SIZE = 16;
 
 export default StyleSheet.create({
-  all: {
+  container: {
     flex: 1,
-    height: 50,
     position: 'relative',
   },
-  input: {
-    paddingLeft: 0,
-    fontSize: FONT_SIZE,
-  },
-  fill: {
+  flexWarp: {
     justifyContent: 'center',
     position: 'absolute',
     left: 0,
@@ -20,11 +16,11 @@ export default StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  fillHide: {
-    left: 1000,
-  },
-  placeholder: {
-    color: '#999',
+  input: {
+    paddingLeft: 10,
+    height: 40,
     fontSize: FONT_SIZE,
+    borderColor: '#666',
+    borderWidth: HAIR_LINE_WIDTH,
   },
 });
