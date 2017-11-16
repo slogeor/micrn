@@ -1,65 +1,52 @@
-# PlaceholderInput
+### Input: 输入框
 
-**可以自定义占位元素的输入框**
+基于 React Native 的 TextInput 封装而成，支持 TextInput 的 props 透传。
 
-React Native 提供的 `TextInput` 组件的 `placeholder` 可定制程度太低了，`PlaceholderInput` 应运而生。
-
-## Example
+#### 使用方法
 
 ```js
-import PlaceholderInput from 'rnx-ui/PlaceholderInput';
-
-function Example(props) {
-  return (
-    <PlaceholderInput />
-  );
-}
+<Input
+  placeholder="placeholder"
+  maxLength={11}
+  editable={false}
+  onChangeText={(val) => {
+    this.setState({
+      text: val,
+    })
+  }}
+  ref={this.getInputRef}
+/>
 ```
 
-## Props
+#### 具体效果
+
+<img src="./demo.png" width = "320"  alt="图片名称" align=center />
+
+#### props
 
 ```js
-PlaceholderInput.propTypes = {
+Input.propTypes = {
   // 自定义样式
   style: View.propTypes.style,
-  // 初始值
-  defaultValue: PropTypes.string,
   // 自定义输入框样式
   inputStyle: TextInput.propTypes.style,
-  // 占位元素
-  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  // 占位元素样式（placeholder 为字符串时才生效）
-  placeholderStyle: Text.propTypes.style,
-  // onChangeText 的第二个参数，同时在校验器中做标识
-  name: PropTypes.string,
-  // 用来在校验器中组成错误信息
-  readableName: PropTypes.string,
-  // 校验器接口
-  collectValidate: PropTypes.func,
-  // 是否必要
-  required: PropTypes.bool,
-  // 是否可禁用
-  disabled: PropTypes.bool,
-  // 输入回调
-  onChangeText: PropTypes.func,
-  // TextInput 属性
-  textInputProps: PropTypes.object,
   // 获取 TextInput 元素
   getInput: PropTypes.func,
+  // 文本距离左边的间距
+  paddingLeft: PropTypes.number,
+  // placeholder color
+  placeholderColor: PropTypes.string,
 };
-PlaceholderInput.defaultProps = {
+```
+
+#### 默认值
+
+```js
+Input.defaultProps = {
   style: null,
-  defaultValue: '',
   inputStyle: null,
-  placeholder: '',
-  placeholderStyle: null,
-  name: '',
-  readableName: '',
-  collectValidate: NOOP,
-  required: false,
-  disabled: false,
-  onChangeText: NOOP,
-  textInputProps: {},
   getInput: NOOP,
+  paddingLeft: 10,
+  placeholderColor: '#999',
 };
 ```
