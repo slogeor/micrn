@@ -1,14 +1,6 @@
-import React, {
-  PropTypes,
-  Component,
-} from 'react';
-import {
-  View,
-  Text,
-  TouchableHighlight,
-  Animated,
-} from 'react-native';
-
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, TouchableHighlight, Animated } from 'react-native';
 import styles from './styles';
 
 const NOOP = () => {};
@@ -183,7 +175,7 @@ AddAndSubtract.propTypes = {
   hitSlop: TouchableHighlight.propTypes.hitSlop,
 };
 AddAndSubtract.defaultProps = {
-  num: 0,
+  num: 3,
   onPressAdder: NOOP,
   onPressSubtracter: NOOP,
   duration: 200,

@@ -38,3 +38,5 @@ export { default as Popover } from './Popover';
 export { default as Confirm } from './Confirm';
 // 上拉菜单组件
 export { default as ActionSheet } from './ActionSheet';
+// 加减号组件
+export { default as AddAndSubtract } from './AddAndSubtract';
