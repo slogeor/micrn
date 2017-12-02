@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Text, View, TouchableWithoutFeedback} from "react-native"
+import { Text, View, TouchableWithoutFeedback, TextInput} from "react-native"
 import {
   All,
   NavBar,
@@ -14,6 +14,12 @@ import {
   ToolTip,
   Dialog,
   Alert,
+  Confirm,
+  Switch,
+  Radio,
+  Checkbox,
+  Input,
+  AddAndSubtract,
 } from "UIModule"
 import styles from "./style"
 
@@ -21,10 +27,13 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: false,
+      visible: true,
+      text: '',
     }
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.getInputRef = this.getInputRef.bind(this);
   }
 
   show() {
@@ -39,23 +48,26 @@ export default class Home extends React.Component {
     })
   }
 
+  onChange() {
+    this.setState({
+      visible: !this.state.visible,
+    })
+  }
+
+  getInputRef(el) {
+    this.el = el;
+  }
+
   render() {
     return (
       <All>
         <NavBar
-          title="Alert"
+          title="AddAndSubtract"
           titleStyle={{width: 200}}
           leftBtnStyle={{color: '#FF5200'}}
         />
         <View style={styles.container}>
-          <View>
-            <Btn onPress={this.show} />
-          </View>
-          <Alert
-            visible={this.state.visible}
-            onPress={this.hide}
-            titleStyle={styles.text}
-          />
+          <AddAndSubtract />
         </View>
       </All>
     )

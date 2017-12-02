@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
+    padding: 10,
   },
   tab: {
     height: 30,
@@ -16,7 +17,7 @@ export default StyleSheet.create({
     width: 80,
   },
   titleStyle: {
-    fontSize: 12,
+    fontSize: 18,
   },
   activeTitleStyle: {
     color: '#F00'
@@ -48,5 +49,15 @@ export default StyleSheet.create({
   text: {
     color: 'blue',
   },
-
+  wrap1: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  placeholderStyle: {
+    fontSize: 20,
+    color: '#FF5200',
+  },
+  width100: {
+    borderRadius: 4,
+  },
 });
